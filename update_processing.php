@@ -9,19 +9,16 @@ if(isset($_POST['submit'])) {
   $id = $_POST["id"];
 
 
-$req = $db->prepare('UPDATE users SET username = :username, password = :password WHERE id = "$id"');
+$req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
 $req->execute(array(
   'username' => $username,
   'password' => $password
  )) or die(print_r($db->errorInfo()));
-//{
-//     echo "goood<br>";
 
-//   } else {
-//   var_dump($req);
-//   echo "failed<br>";
-//   die(print_r($db->errorInfo()));
-//   }
+
+echo "goood<br>";
+
+
 }
 header('Location: login_read.php');
 exit;

@@ -18,11 +18,13 @@ while ($donnees = $req->fetch())
   ?>
 
   <p>
-  <strong>Pseudo :</strong> <?php echo $donnees['username']; ?>
+  <strong>Pseudo :</strong> <?php echo $donnees['username']; ?> <br>
+  <strong>PSW :</strong> <?php echo $donnees['password']; ?>
   <?php
 }
 ?>
   </p>
+  <p><a href="login_update2.php">Update again</a></p>
 
 <!DOCTYPE html>
 <html lang="en">
