@@ -13,3 +13,18 @@ function showAllData() {
   }
 }
 
+function UpdateTable() {
+  global $db;
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $id = $_POST["id"];
+
+
+$req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
+$req->execute(array(
+  'username' => $username,
+  'password' => $password
+ )) or die(print_r($db->errorInfo()));
+
+}
+

@@ -1,3 +1,11 @@
+<?php
+include "db.php";
+include "functions.php";
+if(isset($_POST['submit'])) {
+  UpdateTable();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,7 @@
   <div class="container">
 
     <div class="col-sm-6">
-      <form action="update_processing.php" method="post">
+      <form action="login_update2.php" method="post">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" name="username" class="form-control">
@@ -24,7 +32,7 @@
         <select name="id" id="">
           <?php
           // $req = $bdd->query('SELECT * FROM users');
-          include "functions.php";
+
           showAllData();
            ?>
         </select>
@@ -35,9 +43,9 @@
     </div>
 
 
-
-
-
 </div>
 </body>
 </html>
+
+
+
