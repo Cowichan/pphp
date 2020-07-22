@@ -1,22 +1,17 @@
 <?php
 include "db.php";
 include "functions.php";
-if(isset($_POST['submit'])) {
-  UpdateTable();
-}
+
+UpdateTable();
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>pphp update</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-</head>
-<body>
+<?php include "includes/header.php"; ?>
+
   <div class="container">
 
     <div class="col-sm-6">
+      <h2 class="text-center">Update</h2>
       <form action="login_update.php" method="post">
         <div class="form-group">
           <label for="username">Username</label>
@@ -45,10 +40,7 @@ if(isset($_POST['submit'])) {
       <p><a href="login_read.php">Readddddddd</a> </p>
     </div>
 
-
-</div>
-</body>
-</html>
+<?php include "includes/footer.php"; ?>
 
 
 

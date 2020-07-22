@@ -1,6 +1,39 @@
 <?php
 include "db.php";
 // database_connect();
+
+function createRows() {
+  if(isset($_POST['submit'])) {
+  global $db;
+
+  $pseudo = $_POST['username'];
+  $mdp = $_POST['password'];
+
+  $req = $db->prepare("INSERT INTO users (username, password) VALUES (:pseudo, :mdp)");
+
+  if
+  ($req->execute(array("pseudo"=>$pseudo, "mdp"=>$mdp)))
+  {
+  echo "recorded";
+    } else {
+      echo "not recorded <br>";
+      die(print_r($db->errorInfo()));
+    }
+
+  }
+}
+
+function readRows() {
+  global $db;
+
+  $req = $db->query('SELECT * FROM users');
+
+  while ($donnees = $req->fetch())
+  {
+    print_r($donnees);
+  }
+}
+
 function showAllData() {
   global $db;
   $req = $db->query('SELECT * FROM users');
@@ -14,30 +47,45 @@ function showAllData() {
 }
 
 function UpdateTable() {
-  global $db;
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $id = $_POST["id"];
+  if(isset($_POST['submit'])) {
+    global $db;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST["id"];
 
-  $req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
-  $req->execute(array(
-    'username' => $username,
-    'password' => $password
-  )) or die(print_r($db->errorInfo()));
+    $req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
+    if
+    ($req->execute(array(
+      'username' => $username,
+      'password' => $password
+    )))
+    {
+    echo "updated well";
+      } else {
+        echo "not updated <br>";
+        die(print_r($db->errorInfo()));
+      }
+  }
 
 }
 
 function deleteRows() {
-  global $db;
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $id = $_POST["id"];
+  if(isset($_POST['submit'])) {
+    global $db;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $id = $_POST["id"];
 
-  $req = $db->prepare("DELETE from users WHERE id = '$id'");
-  $req->execute(array(
-    'username' => $username,
-    'password' => $password
-  )) or die(print_r($db->errorInfo()));
+    $req = $db->prepare("DELETE from users WHERE id = '$id'");
+    if ($req->execute(array(
+      'username' => $username,
+      'password' => $password
+    ))) {
+      echo "deleted";
+    } else {
+      echo "Not deleted";
+      die(print_r($db->errorInfo()));
+    }
+  }
 
 }
-
