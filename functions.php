@@ -9,6 +9,12 @@ function createRows() {
   $pseudo = $_POST['username'];
   $mdp = $_POST['password'];
 
+  $hashFormat = "$2y$10$";
+  $salt = "abc22waawqqwqeccgjuhte";
+  $hashF_and_salt = $hashFormat . $salt;
+
+  $mdp = crypt($mdp, $hashF_and_salt);
+
   $req = $db->prepare("INSERT INTO users (username, password) VALUES (:pseudo, :mdp)");
 
   if
