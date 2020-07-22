@@ -19,12 +19,25 @@ function UpdateTable() {
   $password = $_POST['password'];
   $id = $_POST["id"];
 
+  $req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
+  $req->execute(array(
+    'username' => $username,
+    'password' => $password
+  )) or die(print_r($db->errorInfo()));
 
-$req = $db->prepare("UPDATE users SET username = :username, password = :password WHERE id = '$id'");
-$req->execute(array(
-  'username' => $username,
-  'password' => $password
- )) or die(print_r($db->errorInfo()));
+}
+
+function deleteRows() {
+  global $db;
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $id = $_POST["id"];
+
+  $req = $db->prepare("DELETE from users WHERE id = '$id'");
+  $req->execute(array(
+    'username' => $username,
+    'password' => $password
+  )) or die(print_r($db->errorInfo()));
 
 }
 

@@ -24,7 +24,7 @@ while ($donnees = $req->fetch())
 }
 ?>
   </p>
-  <p><a href="login_update2.php">Update again</a></p>
+  <p><a href="login_update.php">Update again</a></p>
 
 <!DOCTYPE html>
 <html lang="en">
