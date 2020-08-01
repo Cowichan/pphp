@@ -9,7 +9,11 @@
       $salt = "1assssxcazcedvdvvf22xsxsz22";
       $password_encrypted = crypt($password, $salt);
 
-      echo $password_encrypted;
+      echo $password_encrypted . '<br>';
+      echo "text md5";
+      if (CRYPT_MD5 == 1) {
+      echo 'MD5 :          ' . crypt('rasmuslerdorf', '$1$rasmusle$') . "\n";
+  }
     ?>
   </div>
 
