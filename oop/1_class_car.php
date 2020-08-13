@@ -43,7 +43,7 @@
     // $bmw->MoveWheels();
     $truck = new Car();
 
-    // echo ' ' . $bmw->callMethodWheels();
+    echo ' ' . $bmw->callMethodWheels();
     echo ' ' . $bmw->wheels . "<br>";
     echo ' ' . $truck->wheels = 10;
     ?>
